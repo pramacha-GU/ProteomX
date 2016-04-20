@@ -42,7 +42,7 @@ def word_toknze(txt_name):
             if not w in stop_words:
                 l1.append(w)
         abstract_doc.append(' '.join(l1))
-    with open('cleaned_abstract_list.pkl', 'w') as f:
+    with open('data/cleaned_abstract_list.pkl', 'w') as f:
     	pickle.dump(abstract_list, f)
     return pd.Series(abstract_doc)
 
@@ -66,5 +66,5 @@ def SVD_scree(abstract_word_documents):
     fig.savefig('scree.jpg')
 
 if __name__ == '__main__':
-    abstract_word_documents = word_toknze('pubmed_cleaned.txt')
+    abstract_word_documents = word_toknze('data/pubmed_master.txt')
     SVD_scree(abstract_word_documents)

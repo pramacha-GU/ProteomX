@@ -80,13 +80,13 @@ def cleaning_individual_fields():
             if_value = 1.0
         journal_if.append(if_value)
     df1['Impact_Factor'] = pd.Series(journal_if)
-    df1.to_csv('pubmed_cleaned.txt', index=False, sep='|')
+    df1.to_csv('data/pubmed_cleaned.txt', index=False, sep='|')
 
 
 if __name__ == '__main__':
-    file = open('pubmed_result.txt', 'r')
+    file = open('data/pubmed_result.txt', 'r')
     text_cont_raw = file.read()
     abstract_list = initial_cleanup(text_cont_raw)
     adding_to_txt(abstract_list)
     cleaning_individual_fields()
-    df1.to_csv('pubmed_cleaned.txt', index=False, sep='|')
+    df1.to_csv('data/pubmed_master.txt', index=False, sep='|')

@@ -23,7 +23,7 @@ def tfidf_vec(abstract_word_documents):
     '''
     vectorizer = TfidfVectorizer(max_df=0.5, max_features = 2000, \
                              min_df=2, stop_words='english')
-    return vectorizer.fit_transform(abstract_word_documents)
+    return vectorizer.fit_transform(abstract_word_documents).toarray()
 
 def nmf_WH(X_vec):
     '''
@@ -91,8 +91,6 @@ def rank_year_group(df_month_clus):
 
 if __name__ == '__main__':
     abstract_series = unpickle_abstract_Series('cleaned_abstract_list.pkl')
-    vectorizer = TfidfVectorizer(max_df=0.5, max_features = 2000, \
-                             min_df=2, stop_words='english')
     X_vec = tfidf_vec(abstract_series)
     vec_feature_words = X_vec.get_feature_names()
     W_sklearn_T, H_sklearn = nmf_WH(X_vec)
